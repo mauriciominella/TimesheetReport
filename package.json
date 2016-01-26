@@ -1,0 +1,37 @@
+{
+  "name": "node-library",
+  "version": "0.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "body-parser": "~1.14.2",
+    "cookie-parser": "~1.4.1",
+    "express": "~4.13.3",
+    "express-handlebars": "~2.0.1",
+    "express-session": "~1.13.0",
+    "kerberos": "0.0.17",
+    "mongodb": "^2.1.4",
+    "passport": "~0.3.2",
+    "passport-local": "^1.0.0"
+  },
+  "devDependencies": {
+    "chai": "^3.4.1",
+    "gulp": "^3.9.0",
+    "gulp-inject": "~3.0.0",
+    "gulp-jscs": "^3.0.2",
+    "gulp-jshint": "^2.0.0",
+    "gulp-mocha": "^2.2.0",
+    "gulp-nodemon": "^2.0.6",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "~2.1.0",
+    "mocha": "^2.3.4",
+    "sinon": "^1.17.2",
+    "wiredep": "~3.0.0"
+  }
+}
