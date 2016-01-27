@@ -46,7 +46,9 @@ var togglRepository = require('./src/repository/togglRepository')();
 app.listen(5000, function(err){
 	console.log('running server on port ' + port);
 
-	var arr = togglRepository.getGroupingByDescAndDayByDate(new Date());
-	console.log(arr);
+	togglRepository.getGroupingByDescAndDayByDate(new Date(), function(response){
+			console.log(response);
+	});
+
 
 });

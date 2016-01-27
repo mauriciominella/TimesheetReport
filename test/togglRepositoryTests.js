@@ -7,9 +7,17 @@ var configService = require('../src/services/configService')()
     ,expect = chai.expect;
 
 describe.only('repository test', function(){
-  it('first test', function(){
-     var arr = togglRepository.getGroupingByDescAndDayByDate(new Date());
+  it('first test', function(done){
 
-     expect(arr.length).to.be.above(0);
+      var arr = [];
+      var callback = function(response){
+        console.log(response);
+        arr = response;
+        expect(arr.length).to.be.above(0);
+        done();
+
+      };
+
+     togglRepository.getGroupingByDescAndDayByDate(new Date(), callback);
   });
 });
