@@ -67,4 +67,16 @@ gulp.task('watch-mocha', function(){
     gulp.watch(['./**/*.', 'test/**/*.js'], ['mocha']);
 });
 
+gulp.task('lint', function() {
+  return gulp.src(jsFiles).pipe(lint({
+    'rules':{
+        'quotes': [1, 'single'],
+        'semi': [1, 'always']
+    }
+  }))
+  .pipe(lint.format())
+  // Brick on failure to be super strict
+  .pipe(lint.failOnError());
+});
+
 gulp.task('default', ['style', 'watch-mocha']);
