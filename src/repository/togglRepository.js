@@ -1,7 +1,7 @@
 'use strict';
 
 var TogglClient = require('toggl-api');
-var linq = require('linqsharp').default;
+var _ = require('underscore');
 
 var togglRepository = function(togglUserSettings){
 
@@ -14,22 +14,12 @@ var togglRepository = function(togglUserSettings){
 
    toggl.getTimeEntries(function(err, timeEntries){
 
-     console.log('chamou');
-      console.log(err);
-      var arrResult = new linq(timeEntries).GroupBy(function(obj){
-        return {
-          description: obj.description,
-          startDate: new Date(new Date(obj.start).getFullYear(), new Date(obj.start).getMonth() - 1, new Date(obj.start).getDate())
-        };
-      }).Select(function(obj){
-        return {
-          description: obj.Key.description,
-          start: obj.Key.startDate,
-          duration: new linq(obj.Elements).Sum(function(c){ return c.duration })
-         };
-      }).ToArray();
+       var groups = _.groupBy(timeEntries, function(timeEntry){
+           return timeEntry.description + ' ' + /(\d{4})-(\d{2})-(\d{2})/g.exec(timeEntry.start)[0];
+       });
 
-      callback(timeEntries);
+       console.log(groups);
+      //callback(timeEntries);
     });
 
   };
