@@ -4,6 +4,7 @@ var jscs = require('gulp-jscs');
 var nodemon = require('gulp-nodemon');
 var mocha = require('gulp-mocha');
 var gutil = require('gulp-util');
+var lint = require('gulp-eslint'); // Lint JS files, including JSX
 
 var jsFiles = ['*.js', 'src/**/*.js'];
 
@@ -66,4 +67,4 @@ gulp.task('watch-mocha', function(){
     gulp.watch(['./**/*.', 'test/**/*.js'], ['mocha']);
 });
 
-gulp.task('default', ['watch-mocha']);
+gulp.task('default', ['style', 'watch-mocha']);

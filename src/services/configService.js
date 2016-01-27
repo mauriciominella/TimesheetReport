@@ -6,6 +6,10 @@ var configService = function(){
     //date.getDay();
     return 7.5;
   };
+
+  return {
+    getTotalHourForCurrentDay : getTotalHourForCurrentDay
+  };
 };
 
 module.exports = configService;
