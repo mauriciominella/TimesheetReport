@@ -40,7 +40,13 @@ app.get('/', function(req, res){
 	res.render('index', {	title: 'Home', nav: navigation });
 });
 
+
+var togglRepository = require('./src/repository/togglRepository')();
 //starting the server
 app.listen(5000, function(err){
 	console.log('running server on port ' + port);
+
+	var arr = togglRepository.getGroupingByDescAndDayByDate(new Date());
+	console.log(arr);
+
 });
