@@ -9,12 +9,9 @@ var configService = require('../src/services/configService')()
 describe.only('repository test', function(){
   it('first test', function(done){
 
-      var arr = [];
       var callback = function(response){
-        arr = response;
-        expect(arr.length).to.be.above(0);
+        expect(response.length).to.be.above(0);
         done();
-
       };
 
      togglRepository.getGroupingByDescAndDayByDate(new Date(), callback);
