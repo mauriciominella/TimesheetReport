@@ -11,7 +11,6 @@ describe.only('repository test', function(){
 
       var arr = [];
       var callback = function(response){
-        console.log(response);
         arr = response;
         expect(arr.length).to.be.above(0);
         done();
