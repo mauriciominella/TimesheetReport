@@ -20,7 +20,7 @@ var router = function(navigation){
 															{
 															 title:'Toggl Report',
 															 nav: navigation,
-															 timeEnties: timeEntries
+															 timeEntries: timeEntries
 														 });
 			};
 

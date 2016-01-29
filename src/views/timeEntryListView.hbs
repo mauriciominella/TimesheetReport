@@ -98,7 +98,7 @@
 
 
           <!--/stories-->
-		        {{#each books}}
+		        {{#each timeEntries}}
 							<div class="row">
 		            <br>
 		            <div class="col-md-2 col-sm-3 text-center">
@@ -108,8 +108,10 @@
 		              <h3>{{this.title}}</h3>
 		              <div class="row">
 		                <div class="col-xs-9">
-		                  <h4><span class="label label-default">{{this.author}}</span></h4><h4>
-		                  <small style="font-family:courier,'new courier';" class="text-muted"><a href="books/{{this._id}}" class="text-muted">Read More</a></small>
+		                  <h4><span class="label label-default">{{this.description}}</span></h4><h4>
+												<h4><span class="label label-default">{{this.startDate}}</span></h4><h4>
+													<h4><span class="label label-default">{{this.duration}}</span></h4><h4>
+		                  <small style="font-family:courier,'new courier';" class="text-muted"><a href="books/{{@index}}" class="text-muted">Read More</a></small>
 		                  </h4></div>
 		                <div class="col-xs-3"></div>
 		              </div>
