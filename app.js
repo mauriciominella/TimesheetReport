@@ -9,9 +9,9 @@ var app = express();
 
 var port = process.env.PORT || 5000;
 
-var navigation = [{Link:'/Books', Text: 'Book'},{Link:'/Authors', Text:'Author'}];
+var navigation = [{Link:'/Reports', Text: 'Report'},{Link:'/Authors', Text:'Author'}];
 
-var bookRouter = require('./src/routes/bookRoutes')(navigation);
+var reportRouter = require('./src/routes/reportRoutes')(navigation);
 var adminRouter = require('./src/routes/adminRoutes')(navigation);
 var authRouter = require('./src/routes/authRoutes')(navigation);
 
@@ -32,7 +32,7 @@ app.set('view engine', '.hbs');
 
 
 //routes
-app.use('/Books', bookRouter);
+app.use('/Report', reportRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
 
@@ -45,10 +45,4 @@ var togglRepository = require('./src/repository/togglRepository')();
 //starting the server
 app.listen(5000, function(err){
 	console.log('running server on port ' + port);
-
-	togglRepository.getGroupingByDescAndDayByDate(new Date(), function(response){
-			console.log(response);
-	});
-
-
 });
