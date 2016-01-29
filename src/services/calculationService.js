@@ -9,7 +9,7 @@ Number.prototype.RoundI = function(roundingInterval){
   return rounded;
 };
 
-var timesheetCalculationService = function(configService){
+var calculationService = function(configService){
 
     var originalTimeEntryList = [];
     var outputTimeEntryList = [];
@@ -85,4 +85,4 @@ var timesheetCalculationService = function(configService){
     };
 }
 
-module.exports = timesheetCalculationService;
+module.exports = calculationService;

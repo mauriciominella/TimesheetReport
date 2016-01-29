@@ -1,12 +1,12 @@
 'use strict';
 
-var configService = require('../src/services/configService')()
-  ,calculationService = require('../src/services/timesheetCalculationService')(configService)
+var configService = require('../../src/services/configService')()
+  ,calculationService = require('../../src/services/calculationService')(configService)
     ,chai = require('chai')
     ,should = chai.should()
     ,expect = chai.expect;
 
-describe('Calculation Service', function(){
+describe('CalculationService', function(){
   it('Rounded hours correctness using specific scenario 1', function(){
 
    var timeEntryList = new Array(

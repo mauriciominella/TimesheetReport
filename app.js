@@ -32,7 +32,7 @@ app.set('view engine', '.hbs');
 
 
 //routes
-app.use('/Report', reportRouter);
+app.use('/Reports', reportRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
 
