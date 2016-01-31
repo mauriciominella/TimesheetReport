@@ -2,6 +2,7 @@ var express = require('express');
 var reportRouter = express.Router();
 var togglRepository = require('../repository/togglRepository')();
 var dateService = require('../services/dateService')();
+var moment = require('moment');
 
 var timeEntryService = require('../services/timeEntryService')({
 	togglRepository : togglRepository,
@@ -24,7 +25,7 @@ var router = function(navigation){
 														 });
 			};
 
-			timeEntryService.getByDate(new Date(), getByDateCallBack);
+			timeEntryService.getByDate(moment().subtract(1, 'days'), getByDateCallBack);
 		});
 
 		return reportRouter;
