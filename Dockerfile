@@ -3,7 +3,7 @@ FROM node:4-onbuild
 EXPOSE 5000
 
 # Define working directory.
-WORKDIR /data
+WORKDIR .
 
 ADD package.json package.jon
 
