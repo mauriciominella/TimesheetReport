@@ -7,7 +7,7 @@ web:
     build: .
     command: gulp serve
     volumes:
-        - .
+        - .:/src/app/
     ports:
         - 5000:5000/tcp
     links:
