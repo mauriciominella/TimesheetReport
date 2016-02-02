@@ -9,8 +9,8 @@
 		<link href="lib/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
 		<link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
 		<!--bower:css-->
-		<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
 		<!--endbower-->
 		<!-- bower:js -->
 		<script src="/lib/jquery/dist/jquery.js"></script>
@@ -98,25 +98,28 @@
 
 
           <!--/stories-->
+		        {{#each timeEntries}}
 							<div class="row">
-								<table class="table table-striped">
-									<thead>
-										<tr>
-											<th>Description</th>
-											<th>Date</th>
-											<th>Duration</th>
-										</tr>
-									</thead>
-									<tbody>
-											{{#each timeEntries}}
-												<tr>
-														<td>{{this.description}}</td>
-														<td>{{formatDate this.startDate}}</td>
-														<td>{{this.duration}}</td>
-												</tr>
-											{{/each}}
-									</tbody>
-								</table>
+		            <br>
+		            <div class="col-md-2 col-sm-3 text-center">
+		              <a class="story-title" href="#"><img alt="" src="http://api.randomuser.me/portraits/thumb/men/58.jpg" style="width:100px;height:100px" class="img-circle"></a>
+		            </div>
+		            <div class="col-md-10 col-sm-9">
+		              <h3>{{this.title}}</h3>
+		              <div class="row">
+		                <div class="col-xs-9">
+		                  <h4><span class="label label-default">{{this.description}}</span></h4><h4>
+												<h4><span class="label label-default">{{this.startDate}}</span></h4><h4>
+													<h4><span class="label label-default">{{this.duration}}</span></h4><h4>
+		                  <small style="font-family:courier,'new courier';" class="text-muted"><a href="books/{{@index}}" class="text-muted">Read More</a></small>
+		                  </h4></div>
+		                <div class="col-xs-3"></div>
+		              </div>
+		              <br><br>
+		            </div>
+		          </div>
+		          <hr>
+		        {{/each}}
 
 
 

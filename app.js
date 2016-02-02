@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
+var moment = require('moment');
 
 var app = express();
 
@@ -27,9 +28,25 @@ app.use(express.static('src/views'));
 app.set('views', './src/views');
 
 var handlebars = require('express-handlebars');
-app.engine('.hbs', handlebars({extname: '.hbs'}));
+//var HandlebarsIntl = require('handlebars-intl');
+//HandlebarsIntl.registerWith(handlebars);
+var hbs = handlebars.create(
+	{
+		extname: '.hbs',
+		helpers:{
+			formatDate : function(timestamp){
+				return moment(timestamp).format("DD-MM-YYYY");
+			}
+		}
+	}
+);
+
+app.engine('.hbs', hbs.engine);
 app.set('view engine', '.hbs');
 
+/*hbs.registerHelper("formatDate", function(timestamp) {
+     return (new Date(timestamp)).format("dd-MM-yyyy");
+});*/
 
 //routes
 app.use('/Reports', reportRouter);
