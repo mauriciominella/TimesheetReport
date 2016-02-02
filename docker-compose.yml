@@ -2,12 +2,11 @@ db:
     image: mongo
     ports:
         - 27017:27017/tcp
-    command: "--smallfiles --logpath=/dev/null"      
 web:
     build: .
     command: gulp serve
     volumes:
-        - .:/src/app/
+        - .:/usr/src/app
     ports:
         - 5000:5000/tcp
     links:
