@@ -1,6 +1,7 @@
 'use strict';
 
 var _ = require('underscore');
+var timeEntry = require('../models/timeEntry');
 
 var groupingService = function(){
 
@@ -25,11 +26,15 @@ var groupingService = function(){
            return prev + Number(curr.duration);
          }, 0);
 
-         groupedTimeEntries.push({
+         /*groupedTimeEntries.push({
            description : firstEntry.description,
            duration: totalDuration,
            startDate: new Date(firstEntry.start)
-         });
+         });*/
+
+         groupedTimeEntries.push(
+            new timeEntry(firstEntry.description, totalDuration, new Date(firstEntry.start))
+          );
      };
 
      return groupedTimeEntries;
