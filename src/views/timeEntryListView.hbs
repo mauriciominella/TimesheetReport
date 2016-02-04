@@ -70,6 +70,10 @@
 											<th>Description</th>
 											<th>Date</th>
 											<th>Duration</th>
+											<th>Percent</th>
+											<th>Suggested</th>
+											<th>Rounded</th>
+											<th>Timesheet?</th>
 										</tr>
 									</thead>
 									<tbody>
@@ -78,6 +82,10 @@
 														<td>{{this.description}}</td>
 														<td>{{formatDate this.startDate}}</td>
 														<td>{{this.getDurationInHours}}</td>
+														<td></td>
+														<td></td>
+														<td></td>
+														<td><input type="checkbox" name="selectTimeEntry" value={{this}} />
 												</tr>
 											{{/each}}
 									</tbody>
