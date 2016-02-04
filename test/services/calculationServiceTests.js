@@ -1,7 +1,7 @@
 'use strict';
 
 var configService = require('../../src/services/configService')()
-  ,calculationService = require('../../src/services/calculationService')(configService)
+  ,calculationService = require('../../src/services/calculationService')({configService: configService})
     ,chai = require('chai')
     ,should = chai.should()
     ,expect = chai.expect;

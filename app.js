@@ -36,6 +36,9 @@ var hbs = handlebars.create(
 		helpers:{
 			formatDate : function(timestamp){
 				return moment(timestamp).format("DD-MM-YYYY");
+			},
+			json: function(context) {
+			    return escape(JSON.stringify(context));
 			}
 		}
 	}

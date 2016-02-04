@@ -1,11 +1,12 @@
 'use strict';
 var moment = require('moment');
 
-var TimeEntry = function(description, duration, startDate){
+var TimeEntry = function(description, duration, startDate, isTimesheet){
   this.description = description;
   this.duration = duration;
   this.startDate = startDate;
   this.percent = 0;
+  this.isTimesheet = isTimesheet || false;
   this.hoursSuggested = 0;
   this.hoursSuggestedRounded = 0;
 

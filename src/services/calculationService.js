@@ -9,7 +9,7 @@ Number.prototype.RoundI = function(roundingInterval){
   return rounded;
 };
 
-var calculationService = function(configService){
+var calculationService = function(options){
 
     var originalTimeEntryList = [];
     var outputTimeEntryList = [];
@@ -18,6 +18,7 @@ var calculationService = function(configService){
     var totalHoursRounded = 0;
 
     var calculateItems = function(listToCalculate, selectedDate){
+      outputTimeEntryList = [];
       originalTimeEntryList = listToCalculate;
 
       var filterArrayCondition = function(value){
@@ -34,8 +35,8 @@ var calculationService = function(configService){
 
       outputTimeEntryList = outputTimeEntryList.map(function(value){
         value.percent = value.duration * 100 / totalDurationTime;
-        value.hoursSuggested = (configService.getTotalHourForCurrentDay(selectedDate) * (value.duration * 100 / totalDurationTime) / 100);
-        value.hoursSuggestedRounded = (configService.getTotalHourForCurrentDay(selectedDate) * (value.duration * 100 / totalDurationTime) / 100).RoundI(0.25);
+        value.hoursSuggested = (options.configService.getTotalHourForCurrentDay(selectedDate) * (value.duration * 100 / totalDurationTime) / 100);
+        value.hoursSuggestedRounded = (options.configService.getTotalHourForCurrentDay(selectedDate) * (value.duration * 100 / totalDurationTime) / 100).RoundI(0.25);
 
         return value;
       });
@@ -44,7 +45,7 @@ var calculationService = function(configService){
         return prev + Number(curr.hoursSuggestedRounded);
       }, 0);
 
-      var roundingDifference = configService.getTotalHourForCurrentDay(selectedDate) - totalHoursRounded;
+      var roundingDifference = options.configService.getTotalHourForCurrentDay(selectedDate) - totalHoursRounded;
 
       var hoursToDistribute = 0;
 
@@ -59,7 +60,8 @@ var calculationService = function(configService){
 
       return {
         totalDurationTime : totalDurationTime,
-        totalHoursRounded : totalHoursRounded
+        totalHoursRounded : totalHoursRounded,
+        items : outputTimeEntryList
       }
 
     };

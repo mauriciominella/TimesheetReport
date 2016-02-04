@@ -53,8 +53,8 @@
   </div>
 </header>
 
-
-<div class="container">
+<form action="/reports" method="post">
+	<div class="container">
   <div class="row">
 
     <div class="col-md-12">
@@ -82,16 +82,16 @@
 														<td>{{this.description}}</td>
 														<td>{{formatDate this.startDate}}</td>
 														<td>{{this.getDurationInHours}}</td>
-														<td></td>
-														<td></td>
-														<td></td>
-														<td><input type="checkbox" name="selectTimeEntry" value={{this}} />
+														<td>{{this.percent}}</td>
+														<td>{{this.hoursSuggested}}</td>
+														<td>{{this.hoursSuggestedRounded}}</td>
+														<td><input type="checkbox" name="selectedTimeEntries" value={{{json this}}} />
 												</tr>
 											{{/each}}
 									</tbody>
 								</table>
           <!--/stories-->
-
+						<input type="submit" name="Calculate" />
         </div>
       </div>
 
@@ -100,7 +100,7 @@
    	</div><!--/col-12-->
   </div>
 </div>
-
+</form>
 	<!-- script references -->
 	<!--  <script src="lib/jquery/dist/jquery.min.js"></script>
 		<script src="lib/bootstrap/dist/js/bootstrap.min.js"></script>-->

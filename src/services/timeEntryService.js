@@ -1,8 +1,10 @@
 'use strict';
 
+var timeEntry = require('../models/timeEntry');
+
 var timeEntryService = function(options){
 
-  if(!options.togglRepository)
+ if(!options.togglRepository)
     throw new Error('Options.togglRepository is required');
 
   if(!options.dateService)
@@ -20,8 +22,15 @@ var timeEntryService = function(options){
     repository.getGroupingByDescAndDayByDate(dateRange.start, dateRange.end, callback);
   };
 
+  var mapToTimeEntry = function(rawTimeEntries){
+      return rawTimeEntries.map(function(value){
+          return new timeEntry(value.description, value.duration, value.startDate, true);
+      });
+  };
+
   return {
-    getByDate : getByDate
+    getByDate : getByDate,
+    mapToTimeEntry : mapToTimeEntry
   };
 };
 
