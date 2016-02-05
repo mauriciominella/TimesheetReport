@@ -34,6 +34,7 @@ var router = function(navigation){
 		})
 		.post(function(req, res){
 
+			console.log(req.body.action)
 			var selectedTimeEntries = JSON.parse('[' + unescape(req.body.selectedTimeEntries) + ']');
 			selectedTimeEntries = timeEntryService.mapToTimeEntry(selectedTimeEntries);
 
