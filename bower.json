@@ -17,8 +17,8 @@
   ],
   "dependencies": {
     "bootstrap": "~3.3.6",
-    "font-awesome": "~4.5.0"
-
+    "font-awesome": "~4.5.0",
+    "jquery-ui": "~1.11.4"
   },
   "overrides": {
     "bootstrap":{
@@ -33,6 +33,12 @@
         "less/font-awesome.less",
         "css/font-awesome.min.css",
         "scss/font-awesome.scss"
+      ]
+    },
+    "jquery-ui":{
+      "main":[
+        "jquery-ui.min.js",
+        "themes/smoothness/jquery-ui.min.css"
       ]
     }
   }
