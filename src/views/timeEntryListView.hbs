@@ -10,12 +10,17 @@
 		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css" />
 		<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css" />
 		<link rel="stylesheet" href="/lib/jquery-ui/themes/smoothness/jquery-ui.min.css" />
+		<link rel="stylesheet" href="/lib/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css" />
 		<!--endbower-->
 		<!-- bower:js -->
 		<script src="/lib/jquery/dist/jquery.js"></script>
 		<script src="/lib/bootstrap/dist/js/bootstrap.js"></script>
 		<script src="/lib/jquery-ui/jquery-ui.min.js"></script>
+		<script src="/lib/jquery-ui/ui/i18n/datepicker-pt-BR.js"></script>
 		<script src="/lib/moment/moment.js"></script>
+		<script src="/lib/moment/locale/pt-br.js"></script>
+		<script src="/lib/bootstrap-datepicker/dist/js/bootstrap-datepicker.js"></script>
+		<script src="/lib/bootstrap-datepicker/dist/locales/bootstrap-datepicker.pt-BR.min.js"></script>
 		<!--endbower -->
 		<!-- inject:css -->
 		<link rel="stylesheet" href="/css/styles.css">
@@ -56,11 +61,11 @@
   </div>
 </header>
 
-<form action="/reports" method="post">
+<form id="mainForm" action="/reports" method="post">
 	<div class="container">
 		<hr>
 	  <div class="form-group">
-	    <input type="text" id="currentDate" name="currentDate" value="" class="form-control">
+	    <input type="text" id="currentDate" name="currentDate" value="{{currentDate}}" class="form-control">
 	  </div>
 	</div>
 	<div class="container">
@@ -119,8 +124,11 @@
 	<script type="text/javascript">
 		$(function () {
 			$.datepicker.setDefaults( $.datepicker.regional[ "pt-BR" ] );
-			$('#currentDate').datepicker();
-			$('#currentDate').val(moment().format('DD/MM/YYYY'))
+			$('#currentDate').datepicker({
+    		format: 'dd/mm/yyyy',
+    		language: 'pt-BR'
+			});
+
 		});
 	</script>
 	</body>

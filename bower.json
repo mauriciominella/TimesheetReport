@@ -19,7 +19,8 @@
     "bootstrap": "~3.3.6",
     "font-awesome": "~4.5.0",
     "jquery-ui": "~1.11.4",
-    "moment": "~2.11.2"
+    "moment": "~2.11.2",
+    "bootstrap-datepicker": "^1.6.0"
   },
   "overrides": {
     "bootstrap": {
@@ -39,12 +40,21 @@
     "jquery-ui": {
       "main": [
         "jquery-ui.min.js",
-        "themes/smoothness/jquery-ui.min.css"
+        "themes/smoothness/jquery-ui.min.css",
+        "ui/i18n/datepicker-pt-BR.js"
       ]
     },
-    "moment":{
+    "bootstrap-datepicker":{
       "main":[
-        "moment.js"
+        "dist/css/bootstrap-datepicker.min.css",
+        "dist/js/bootstrap-datepicker.js",
+        "dist/locales/bootstrap-datepicker.pt-BR.min.js"
+      ]
+    },
+    "moment": {
+      "main": [
+        "moment.js",
+        "locale/pt-br.js"
       ]
     }
   }
