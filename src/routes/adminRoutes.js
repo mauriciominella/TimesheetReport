@@ -46,6 +46,6 @@ var router = function(navigation){
     });
 
   return adminRouter;
-}
+};
 
 module.exports = router;

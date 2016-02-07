@@ -23,11 +23,12 @@ var calculationService = function(options){
 
       var filterArrayCondition = function(value){
         return value.isTimesheet;
-      }
+      };
 
       outputTimeEntryList = outputTimeEntryList.concat(originalTimeEntryList.filter(filterArrayCondition));
 
-      if(outputTimeEntryList.length < 0){ return };
+      if(outputTimeEntryList.length < 0)
+        { return; }
 
       totalDurationTime = outputTimeEntryList.reduce(function(prev, curr){
         return prev + curr.duration;
@@ -62,7 +63,7 @@ var calculationService = function(options){
         totalDurationTime : totalDurationTime,
         totalHoursRounded : totalHoursRounded,
         items : outputTimeEntryList
-      }
+      };
 
     };
 
@@ -85,6 +86,6 @@ var calculationService = function(options){
       totalDurationTime : totalDurationTime,
       totalHoursRounded : totalHoursRounded
     };
-}
+};
 
 module.exports = calculationService;

@@ -35,7 +35,7 @@ var hbs = handlebars.create(
 		extname: '.hbs',
 		helpers:{
 			formatDate : function(timestamp){
-				return moment(timestamp).format("DD-MM-YYYY");
+				return moment(timestamp).format('DD-MM-YYYY');
 			},
 			json: function(context) {
 			    return escape(JSON.stringify(context));

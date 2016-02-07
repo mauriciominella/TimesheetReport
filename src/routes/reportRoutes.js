@@ -26,11 +26,11 @@ var router = function(navigation){
 
 	var getPreviousDate = function(date){
 		return moment(date).subtract(1, 'days');
-	}
+	};
 
 	var getNextDate = function(date){
 		return moment(date).add(1, 'days');
-	}
+	};
 
 	var renderTimeEntriesByDate = function(req, res, currentDate){
 
