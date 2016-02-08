@@ -17,96 +17,17 @@ var calculationService = require('../services/calculationService')({
 
 var router = function(navigation){
 
-	var DATE_FORMAT = 'DD/MM/YYYY';
-
-	//middleware
-	reportRouter.use(function(req, res, next){
-		next();
+	var reportController = require('../controllers/reportController')({
+		timeEntryService : timeEntryService,
+		calculationService : calculationService,
+		navigation: navigation
 	});
 
-	var getPreviousDate = function(date){
-		return moment(date).subtract(1, 'days');
-	};
-
-	var getNextDate = function(date){
-		return moment(date).add(1, 'days');
-	};
-
-	var renderTimeEntriesByDate = function(req, res, currentDate){
-
-		var getByDateCallBack = function(timeEntries){
-
-			res.render('timeEntryListView',
-														{
-														 title:'Toggl Report',
-														 nav: navigation,
-														 timeEntries: timeEntries,
-														 currentDate: moment(currentDate).format(DATE_FORMAT)
-													 });
-		};
-
-		timeEntryService.getByDate(currentDate, getByDateCallBack);
-	};
+	reportRouter.use(reportController.middleware);
 
 	reportRouter.route('/')
-		.get(function(req, res){
-			renderTimeEntriesByDate(req, res, moment().subtract(1, 'days').toDate());
-		})
-		.post(function(req, res){
-
-			var currentDate = moment(req.body.currentDate, DATE_FORMAT);
-			console.log(currentDate.toDate());
-			var render = function(currentDate, timeEntries){
-				res.render('timeEntryListView',
-															{
-															 title:'Toggl Report',
-															 nav: navigation,
-															 timeEntries: timeEntries,
-															 currentDate: currentDate.format(DATE_FORMAT)
-														 });
-			};
-
-			var calculate = function(req){
-
-				var selectedTimeEntries = JSON.parse('[' + unescape(req.body.selectedTimeEntries) + ']');
-				selectedTimeEntries = timeEntryService.mapToTimeEntry(selectedTimeEntries);
-
-				var result = calculationService.calculateItems(selectedTimeEntries, currentDate.toDate());
-
-				render(currentDate, result.items);
-			};
-
-			var today = function(req){
-				renderTimeEntriesByDate(req, res, moment().toDate());
-			};
-
-			var previousDay = function(req){
-				renderTimeEntriesByDate(req, res, moment(currentDate).subtract(1, 'days'));
-			};
-
-			var nextDay = function(req){
-				renderTimeEntriesByDate(req, res, moment(currentDate).add(1, 'days'));
-			};
-
-			switch (req.body.action.toLowerCase()) {
-				case 'calculate':
-											calculate(req);
-											break;
-				case 'today':
-											today(req);
-											break;
-				case 'previousday':
-											previousDay(req);
-											break;
-				case 'nextday':
-											nextDay(req);
-											break;
-				default:
-					console.log('Invalid operation: ' + req.body.action.toLowerCase());
-			}
-
-		});
-
+		.get(reportController.getIndex)
+		.post(reportController.postActions);
 
 		return reportRouter;
 };
