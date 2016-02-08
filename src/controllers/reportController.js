@@ -1,21 +1,12 @@
-var moment = require('moment');
-moment.locale('pt-br');
-
 var reportController = function(options){
 
-	var DATE_FORMAT = 'DD/MM/YYYY';
+	var dateHelper = options.dateHelper;
+	var moment = dateHelper.moment();
+	var DATE_FORMAT = dateHelper.getDateFormat();
 
   var middleware = function(req, res, next){
     next();
   };
-
-	var getPreviousDate = function(date){
-		return moment(date).subtract(1, 'days');
-	};
-
-	var getNextDate = function(date){
-		return moment(date).add(1, 'days');
-	};
 
 	var renderTimeEntriesByDate = function(req, res, currentDate){
 
@@ -91,7 +82,6 @@ var reportController = function(options){
 				default:
 					console.log('Invalid operation: ' + req.body.action.toLowerCase());
 			};
-
 		};
 
     return {

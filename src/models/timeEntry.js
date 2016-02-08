@@ -18,9 +18,4 @@ var TimeEntry = function(description, duration, startDate, isTimesheet){
 
 };
 
-
-/*TimeEntry.prototype.getDurationInHours = function () {
-  return moment().startOf('day').seconds(this.duration).format('HH:mm:ss');
-};*/
-
 module.exports = TimeEntry;
