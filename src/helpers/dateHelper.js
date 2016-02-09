@@ -1,9 +1,11 @@
 'use strict';
 
 var momentJs = require('moment');
-momentJs.locale('pt-br');
+
 
 var dateHelper = function(){
+
+  momentJs.locale('pt-br');
 
   var moment = function(){
     return momentJs;

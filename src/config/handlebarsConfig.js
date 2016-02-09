@@ -1,9 +1,11 @@
 
 var expressHandlebars = require('express-handlebars');
-var moment = require('moment');
+var dateHelper = require('../helpers/dateHelper')();
 var numeral = require('numeral');
 
 var handlebarsConfig = function(options){
+
+  var moment = dateHelper.moment();
 
   var helpers = {
     formatDate: function(timestamp){
@@ -17,6 +19,9 @@ var handlebarsConfig = function(options){
     },
     formatDecimal: function(number){
         return numeral(number).format('0.00');
+    },
+    weekDayString: function(date){
+        return moment(date, dateHelper.getDateFormat()).format('dddd');
     }
   }
 
