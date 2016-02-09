@@ -96,8 +96,8 @@
 														<td>{{this.description}}</td>
 														<td>{{formatDate this.startDate}}</td>
 														<td>{{this.getDurationInHours}}</td>
-														<td>{{this.percent}}</td>
-														<td>{{this.hoursSuggested}}</td>
+														<td>{{formatPercent this.percent}}</td>
+														<td>{{formatDecimal this.hoursSuggested}}</td>
 														<td>{{this.hoursSuggestedRounded}}</td>
 														<td><input type="checkbox" name="selectedTimeEntries" value={{{json this}}} />
 												</tr>

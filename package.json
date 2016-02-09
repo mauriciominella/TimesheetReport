@@ -22,6 +22,7 @@
     "linqsharp": "^1.0.1",
     "moment": "^2.11.1",
     "mongodb": "^2.1.4",
+    "numeral": "^1.5.3",
     "passport": "~0.3.2",
     "passport-local": "^1.0.0",
     "request": "^2.69.0",
