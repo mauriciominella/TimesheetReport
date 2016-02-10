@@ -9,10 +9,9 @@ var app = express();
 
 var port = process.env.PORT || 5000;
 
-var navigation = [{Link:'/Reports', Text: 'Report'},{Link:'/Authors', Text:'Author'}];
+var navigation = [{Link:'/Reports', Text: 'Report'},{Link:'/Settings', Text:'Settings'}];
 
 var reportRouter = require('./src/routes/reportRoutes')(navigation);
-var adminRouter = require('./src/routes/adminRoutes')(navigation);
 var authRouter = require('./src/routes/authRoutes')(navigation);
 var settingsRouter = require('./src/routes/settingsRoutes')(navigation);
 
@@ -31,7 +30,6 @@ var handlebarsConfig = require('./src/config/handlebarsConfig')({app: app});
 
 //routes
 app.use('/Reports', reportRouter);
-app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
 app.use('/Settings', settingsRouter);
 
