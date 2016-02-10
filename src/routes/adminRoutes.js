@@ -2,30 +2,7 @@ var express = require('express');
 var adminRouter = express.Router();
 var mongodb = require('mongodb').MongoClient;
 
-var books = [
-  {
-    title: 'War and Peace',
-    genre: 'Historical Fiction',
-    author: 'Lev Nikolayevich Tolstoy',
-    read: false
-  },
-  {
-    title: 'Les Misérables',
-    genre: 'Historical Fiction',
-    author: 'Cool Author',
-    read: false
-  },
-  {
-    title: 'Other Book',
-    genre: 'Other Book Genre',
-    author: 'Other book author books'
-  },
-  {
-    title: 'Fourth Book',
-    genre: 'Fourth Book Genre',
-    author: 'Fourth book author'
-  }
-];
+var books = [];
 
 var router = function(navigation){
 
