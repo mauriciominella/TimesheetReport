@@ -4,6 +4,9 @@ var reportController = function(options){
 	var moment = dateHelper.moment();
 	var DATE_FORMAT = dateHelper.getDateFormat();
 
+	var VIEW_NAME = 'ReportView';
+	var PAGE_TITLE = 'Toggl Report';
+
   var middleware = function(req, res, next){
     next();
   };
@@ -12,9 +15,9 @@ var reportController = function(options){
 
 		var getByDateCallBack = function(timeEntries){
 
-			res.render('timeEntryListView',
+			res.render(VIEW_NAME,
 														{
-														 title:'Toggl Report',
+														 title: PAGE_TITLE,
 														 nav: options.navigation,
 														 timeEntries: timeEntries,
 														 currentDate: moment(currentDate).format(DATE_FORMAT)
@@ -35,9 +38,9 @@ var reportController = function(options){
 			var currentDate = moment(req.body.currentDate, DATE_FORMAT);
 
 			var render = function(currentDate, timeEntries){
-				res.render('timeEntryListView',
+				res.render(VIEW_NAME,
 															{
-															 title:'Toggl Report',
+															 title: PAGE_TITLE,
 															 nav: options.navigation,
 															 timeEntries: timeEntries,
 															 currentDate: currentDate.format(DATE_FORMAT)
