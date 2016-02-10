@@ -14,6 +14,7 @@ var navigation = [{Link:'/Reports', Text: 'Report'},{Link:'/Authors', Text:'Auth
 var reportRouter = require('./src/routes/reportRoutes')(navigation);
 var adminRouter = require('./src/routes/adminRoutes')(navigation);
 var authRouter = require('./src/routes/authRoutes')(navigation);
+var settingsRouter = require('./src/routes/settingsRoutes')(navigation);
 
 //middleware
 app.use(express.static('public'));
@@ -32,6 +33,7 @@ var handlebarsConfig = require('./src/config/handlebarsConfig')({app: app});
 app.use('/Reports', reportRouter);
 app.use('/Admin', adminRouter);
 app.use('/Auth', authRouter);
+app.use('/Settings', settingsRouter);
 
 app.get('/', function(req, res){
 	res.render('index', {	title: 'Home', nav: navigation });
