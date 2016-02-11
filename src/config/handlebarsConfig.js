@@ -1,4 +1,3 @@
-
 var expressHandlebars = require('express-handlebars');
 var dateHelper = require('../helpers/dateHelper')();
 var numeral = require('numeral');
@@ -23,7 +22,7 @@ var handlebarsConfig = function(options){
     weekDayString: function(date){
         return moment(date, dateHelper.getDateFormat()).format('dddd');
     }
-  }
+  };
 
   var hbs = expressHandlebars.create(
   	{
