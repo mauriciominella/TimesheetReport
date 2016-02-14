@@ -1,3 +1,5 @@
+var mongodb = require('mongodb').MongoClient;
+
 var VIEW_NAME = 'SettingsView';
 var PAGE_TITLE = 'Settings';
 
