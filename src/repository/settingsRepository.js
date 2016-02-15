@@ -1,12 +1,12 @@
 var settingsRepository = function(options){
 
-  if(!options.settingsModel){
-    throw new Error('options.settingsModel mandatory');
-  }
-
-  var model = options.settingsModel;
-
   var saveSettings = function(settingsToSave, callback){
+
+   if(!options.settingsModel){
+        throw new Error('options.settingsModel mandatory');
+    };
+
+    var model = options.settingsModel;
 
     //always deleting the record and recreating instead of managing the updating. That's is not the ideal but keep things simpler
     model.findOneAndRemove({}, function(err){
@@ -25,6 +25,12 @@ var settingsRepository = function(options){
 
   var loadSettings = function (err, callback) {
 
+    if(!options.settingsModel){
+        throw new Error('options.settingsModel mandatory');
+    };
+
+    var model = options.settingsModel;
+
     model.findOne({}, function(err, existingRecord){
       callback(err, existingRecord);
     });
@@ -34,7 +40,6 @@ var settingsRepository = function(options){
   return {
     saveSettings: saveSettings,
     loadSettings: loadSettings
-
   };
 };
 

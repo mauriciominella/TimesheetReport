@@ -1,12 +1,18 @@
 'use strict';
 
+
   var chai = require('chai')
   ,should = chai.should()
   ,expect = chai.expect;
 
 describe('Settings Repository', function(){
-  it('Should return and error when settingsModel has not been passed', function(){
 
-    expect(require('../../src/repository/settingsRepository')({})).to.throw(Error);
+  describe('SaveSettings', function(){
+
+    it('Should thrown an error when options are not passed', function(){
+      var settingsRepository = require('../../src/repository/settingsRepository')({});
+      expect(settingsRepository.saveSettings).to.throw(Error);
+    });
+
   });
 });
