@@ -23,7 +23,7 @@ var settingsRepository = function(options){
 
   };
 
-  var loadSettings = function (err, callback) {
+  var loadSettings = function (callback) {
 
     if(!options.settingsModel){
         throw new Error('options.settingsModel mandatory');
