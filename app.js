@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var cookieParser = require('cookie-parser');
 var passport = require('passport');
 var session = require('express-session');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -14,6 +15,8 @@ var navigation = [{Link:'/Reports', Text: 'Report'},{Link:'/Settings', Text:'Set
 var reportRouter = require('./src/routes/reportRoutes')(navigation);
 var authRouter = require('./src/routes/authRoutes')(navigation);
 var settingsRouter = require('./src/routes/settingsRoutes')(navigation);
+
+mongoose.connect('mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + ':27017/timesheetreport');
 
 //middleware
 app.use(express.static('public'));

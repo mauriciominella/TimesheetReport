@@ -31,7 +31,8 @@ var settingsController = function(options){
           if(err){
               res.send(err);
           }else{
-            renderView(req, res, settings.toggl.apiToken);
+            var apiToken = !settings ? '' : settings.toggl.apiToken;
+            renderView(req, res, apiToken);
           }
 
         });
@@ -43,7 +44,7 @@ var settingsController = function(options){
         //Validate
         var settingsToSave = {
             toggl: {
-                apiToken: req.body.apiToken
+                apiToken: req.body.togglApiToken
               }
             };
 

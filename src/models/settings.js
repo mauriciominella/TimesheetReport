@@ -25,7 +25,7 @@ settingsSchema.pre('save', function(next){
 
 // the schema is useless so far
 // we need to create a model using it
-var Settings = mongoose.model('settings', settingsSchema);
+var Settings = mongoose.model('Settings', settingsSchema);
 
 // make this available to our users in our Node applications
 module.exports = Settings;
